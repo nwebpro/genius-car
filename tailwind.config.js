@@ -8,19 +8,21 @@ module.exports = {
       'sm': '576px',
       'md': '768px',
       'lg': '992px',
-      'xl': '1140px'
+      'xl': '1170px'
     },
     extend: {
       colors: {
         'theme-default': '#FF3811',
         'theme-dark': '#151515',
         'theme-body': '#444444',
+        'theme-text': '#737373',
       },
       fontFamily: {
         'inter': ['Inter', 'sans-serif'],
       },
       spacing: {
         'b-130': '130px',
+        'b-70': '70px',
         'b-50': '50px',
         'b-30': '30px',
       },

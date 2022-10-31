@@ -4,9 +4,9 @@ import { router } from './Router/Routes';
 
 const App = () => {
     return (
-        <>
+        <div className='px-[15px] lg:px-0'>
             <RouterProvider router={router} />
-        </>
+        </div>
     );
 };
 

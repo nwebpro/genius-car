@@ -72,8 +72,8 @@ const Header = () => {
                         <Link
                         to="/"
                         class="font-semibold transition-colors duration-200 text-theme-default text-lg leading-21 border border-theme-default px-7 pt-[15px] pb-[19px] rounded-md hover:bg-theme-default hover:text-white"
-                        aria-label="Sign up"
-                        title="Sign up"
+                        aria-label="Appointment"
+                        title="Appointment"
                         >
                             Appointment
                         </Link>
@@ -110,7 +110,7 @@ const Header = () => {
                         </svg>
                     </button>
                     {isMenuOpen && (
-                        <div class="absolute top-0 left-0 w-full">
+                        <div class="absolute top-0 left-0 w-full z-50">
                             <div class="p-5 bg-white border rounded shadow-sm">
                                 <div class="flex items-center justify-between mb-4">
                                     <div>

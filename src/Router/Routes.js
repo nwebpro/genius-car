@@ -1,8 +1,8 @@
-import Main from "../Layout/Main";
-import ErrorPage from "../Pages/ErrorPage/ErrorPage";
-import Home from "../Pages/Home/Home";
+import Main from "../Layout/Main"
+import ErrorPage from "../Pages/ErrorPage/ErrorPage"
+import Home from "../Pages/Home/Home/Home"
 
-const { createBrowserRouter } = require("react-router-dom");
+const { createBrowserRouter } = require("react-router-dom")
 
 export const router = createBrowserRouter([
     {
