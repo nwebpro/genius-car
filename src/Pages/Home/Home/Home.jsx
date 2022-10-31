@@ -3,7 +3,7 @@ import About from '../About/About'
 import Banner from '../Banner/Banner'
 import Products from '../Products/Products'
 import Question from '../Question/Question'
-import Services from '../Services/Services'
+import Service from '../Services/Service'
 import Teams from '../Teams/Teams'
 import Testimonials from '../Testimonial/Testimonials'
 import WhyChoose from '../WhyChoose/WhyChoose'
@@ -13,7 +13,7 @@ const Home = () => {
         <div className='px-[15px] lg:px-0'>
             <Banner />
             <About />
-            <Services />
+            <Service />
             <Question />
             <Products />
             <Teams />
