@@ -5,6 +5,7 @@ import Products from '../Products/Products'
 import Question from '../Question/Question'
 import Services from '../Services/Services'
 import Teams from '../Teams/Teams'
+import WhyChoose from '../WhyChoose/WhyChoose'
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
             <Question />
             <Products />
             <Teams />
+            <WhyChoose />
         </>
     )
 }
