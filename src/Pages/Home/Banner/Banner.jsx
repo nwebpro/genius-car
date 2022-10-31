@@ -52,11 +52,7 @@ const Banner = () => {
         <section className="carousel container mx-auto z-0">
             {
                 bannerData.map(slide => (
-                    <BannerItem
-                    key={slide.id}
-                    slide={slide}>
-
-                    </BannerItem>
+                    <BannerItem key={slide.id} slide={slide} />
                 ))
             }
             
