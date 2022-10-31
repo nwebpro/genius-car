@@ -10,7 +10,7 @@ import WhyChoose from '../WhyChoose/WhyChoose'
 
 const Home = () => {
     return (
-        <>
+        <div className='px-[15px] lg:px-0'>
             <Banner />
             <About />
             <Services />
@@ -19,7 +19,7 @@ const Home = () => {
             <Teams />
             <WhyChoose />
             <Testimonials />
-        </>
+        </div>
     )
 }
 

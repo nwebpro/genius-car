@@ -35,7 +35,7 @@ const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
     return (
-        <div class="mx-auto container h-[86.78px] my-b-50">
+        <div class="mx-auto container h-[86.78px] my-b-50 px-[15px] lg:px-0">
             <div class="relative flex items-center justify-between">
                 <Link
                 to="/"
