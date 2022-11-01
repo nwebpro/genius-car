@@ -36,10 +36,13 @@ const Footer = () => {
                         <h3 className='mb-6 lg:mb-10 text-semibold text-xl leading-6'>Company</h3>
                         <ul>
                             <li>
-                                <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/'>Why Car Doctore</Link>
+                                <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/'>Why Car Doctor</Link>
                             </li>
                             <li>
                                 <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/about'>About</Link>
+                            </li>
+                            <li>
+                                <Link className='text-base font-normal text-[#F3F3F3] leading-10' to='/dashboard'>Dashboard</Link>
                             </li>
                         </ul>
                     </div>
