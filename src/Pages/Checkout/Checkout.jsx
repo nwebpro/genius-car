@@ -1,14 +1,14 @@
 import React from 'react'
 import Breadcrumb from '../Shared/Breadcrumb/Breadcrumb'
-import Service from '../Home/Services/Service'
+import CheckoutForm from './CheckoutForm'
 
-const Services = () => {
+const Checkout = () => {
     return (
         <div className='px-[15px] lg:px-0'>
             <Breadcrumb />
-            <Service />
+            <CheckoutForm />
         </div>
     )
 }
 
-export default Services
+export default Checkout

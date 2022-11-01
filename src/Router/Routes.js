@@ -1,4 +1,6 @@
 import Main from "../Layout/Main"
+import Checkout from "../Pages/Checkout/Checkout"
+import Contact from "../Pages/Contact/Contact"
 import ErrorPage from "../Pages/ErrorPage/ErrorPage"
 import Home from "../Pages/Home/Home/Home"
 import Services from "../Pages/Services/Services"
@@ -27,6 +29,14 @@ export const router = createBrowserRouter([
             {
                 path: '/service-details',
                 element: <ServiceDetail />
+            },
+            {
+                path: '/contact',
+                element: <Contact />
+            },
+            {
+                path: '/checkout',
+                element: <Checkout />
             }
         ]
     }
