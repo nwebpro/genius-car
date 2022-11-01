@@ -70,7 +70,7 @@ const Header = () => {
                     </li>
                     <li>
                         <Link
-                        to="/"
+                        to="/contact"
                         class="font-semibold transition-colors duration-200 text-theme-default text-lg leading-21 border border-theme-default px-7 pt-[15px] pb-[19px] rounded-md hover:bg-theme-default hover:text-white"
                         aria-label="Appointment"
                         title="Appointment"

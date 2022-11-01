@@ -46,7 +46,7 @@ const ContactForm = () => {
                                 class="block w-full py-4 text-xl leading-leading-30 font-semibold text-white bg-theme-default rounded-rounded-10"
                                 type="submit"
                             >
-                                Order Confirm
+                                Submit
                             </button>
                         </div>
                     </form>

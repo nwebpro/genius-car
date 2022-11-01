@@ -1,4 +1,6 @@
 import Main from "../Layout/Main"
+import About from "../Pages/About/About"
+import Blogs from "../Pages/Blog/Blogs"
 import Checkout from "../Pages/Checkout/Checkout"
 import Contact from "../Pages/Contact/Contact"
 import ErrorPage from "../Pages/ErrorPage/ErrorPage"
@@ -23,12 +25,20 @@ export const router = createBrowserRouter([
                 element: <Home />
             },
             {
+                path: '/about',
+                element: <About />
+            },
+            {
                 path: '/services',
                 element: <Services />
             },
             {
                 path: '/service-details',
                 element: <ServiceDetail />
+            },
+            {
+                path: '/blog',
+                element: <Blogs />
             },
             {
                 path: '/contact',

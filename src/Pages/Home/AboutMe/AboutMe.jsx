@@ -3,7 +3,7 @@ import person from '../../../assets/images/about_us/person.jpg'
 import parts from '../../../assets/images/about_us/parts.jpg'
 import { Link } from 'react-router-dom'
 
-const About = () => {
+const AboutMe = () => {
     return (
         <section className='container mx-auto py-b-70 lg:py-b-130'>
             <div className='grid grid-cols-1 lg:grid-cols-2 gap-[61px]'>
@@ -30,4 +30,4 @@ const About = () => {
     )
 }
 
-export default About
+export default AboutMe
