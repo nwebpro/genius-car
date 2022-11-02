@@ -16,7 +16,6 @@ const ServiceDetail = () => {
         .then(res => res.json())
         .then(data => setService(data.data))
     }, [serviceId])
-    
 
     return (
         <div className='px-[15px] lg:px-0'>
