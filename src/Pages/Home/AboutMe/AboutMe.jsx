@@ -18,7 +18,7 @@ const AboutMe = () => {
                     <p className='text-base font-normal leading-leading-30 text-theme-text lg:pr-[70px] mb-b-30'>the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable.</p>
                     <Link
                         to="/"
-                        class="inline-block font-semibold transition-colors duration-200 text-white text-lg leading-21 border border-theme-default bg-theme-default px-[26px] py-[17px] rounded-md hover:bg-transparent hover:border-theme-default hover:text-theme-default"
+                        className="inline-block font-semibold transition-colors duration-200 text-white text-lg leading-21 border border-theme-default bg-theme-default px-[26px] py-[17px] rounded-md hover:bg-transparent hover:border-theme-default hover:text-theme-default"
                         aria-label="Get More Info"
                         title="Get More Info"
                         >

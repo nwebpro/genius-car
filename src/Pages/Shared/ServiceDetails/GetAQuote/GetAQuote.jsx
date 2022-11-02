@@ -16,7 +16,7 @@ const GetAQuote = () => {
             <div className='-mt-3 mb-b-30'>
                 <Link
                     to="/get-a-quote"
-                    class="font-semibold transition-colors duration-200 text-lg leading-21 border border-theme-default px-[22px] py-[17px] rounded-md bg-theme-default text-white"
+                    className="font-semibold transition-colors duration-200 text-lg leading-21 border border-theme-default px-[22px] py-[17px] rounded-md bg-theme-default text-white"
                     aria-label="Get A Quote"
                     title="Get A Quote"
                     >

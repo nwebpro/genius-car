@@ -7,9 +7,9 @@ const Services = () => {
     const [services, setServices] = useState([])
 
     useEffect(() => {
-        fetch('services.json')
+        fetch('http://localhost:5000/api/genius-car/services')
             .then(res => res.json())
-            .then(data => setServices(data))
+            .then(data => setServices(data.data))
     }, [])
 
     return (
@@ -25,7 +25,7 @@ const Services = () => {
             <div className='text-center'>
                 <Link
                     to="/services"
-                    class="font-semibold transition-colors duration-200 text-theme-default text-lg leading-21 border border-theme-default px-[22px] py-[17px] rounded-md hover:bg-theme-default hover:text-white"
+                    className="font-semibold transition-colors duration-200 text-theme-default text-lg leading-21 border border-theme-default px-[22px] py-[17px] rounded-md hover:bg-theme-default hover:text-white"
                     aria-label="More Services"
                     title="More Services"
                     >

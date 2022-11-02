@@ -40,7 +40,7 @@ export const router = createBrowserRouter([
                 element: <Services />
             },
             {
-                path: '/service-details',
+                path: '/service-details/:serviceId',
                 element: <ServiceDetail />
             },
             {
@@ -52,7 +52,7 @@ export const router = createBrowserRouter([
                 element: <Contact />
             },
             {
-                path: '/checkout',
+                path: '/checkout/:serviceId',
                 element: <Checkout />
             }
         ]

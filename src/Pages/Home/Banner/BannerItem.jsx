@@ -23,7 +23,7 @@ const BannerItem = ({ slide }) => {
                 <div className="absolute flex flex-col md:flex-row gap-5 justify-start transform -translate-y-1/2 w-2/3 left-10 md:left-24 top-3/4">
                     <Link
                         to="/"
-                        class="font-semibold transition-colors duration-200 text-white text-lg leading-21 border border-theme-default bg-theme-default px-7 pt-[15px] pb-[19px] rounded-md hover:bg-transparent hover:border-white"
+                        className="font-semibold transition-colors duration-200 text-white text-lg leading-21 border border-theme-default bg-theme-default px-7 pt-[15px] pb-[19px] rounded-md hover:bg-transparent hover:border-white"
                         aria-label="Discover More"
                         title="Discover More"
                         >
@@ -31,7 +31,7 @@ const BannerItem = ({ slide }) => {
                     </Link>
                     <Link
                         to="/"
-                        class="font-semibold transition-colors duration-200 text-white text-lg leading-21 border border-white px-7 pt-[15px] pb-[19px] hover:border-theme-default rounded-md hover:bg-theme-default"
+                        className="font-semibold transition-colors duration-200 text-white text-lg leading-21 border border-white px-7 pt-[15px] pb-[19px] hover:border-theme-default rounded-md hover:bg-theme-default"
                         aria-label="Latest Project"
                         title="Latest Project"
                         >
