@@ -9,14 +9,14 @@ const ServiceContent = ({ service }) => {
             <h2 className='text-theme-dark font-bold text-[35px] leading-[42px] mb-b-30'>{ title }</h2>
             <p className='capitalize font-normal text-base text-theme-text leading-leading-30 mb-b-30'>{ description }</p>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-                {/* {
-                    facility.map((faci, i) => (
+                {
+                    facility?.map((faci, i) => (
                         <div key={i} className='p-10 bg-[#F3F3F3] rounded-rounded-10 border-t-2 border-t-theme-default mb-b-30'>
                             <h3 className='text-theme-body font-bold text-xl leading-6 mb-[10px]'>{ faci?.name }</h3>
                             <p className='capitalize font-normal text-base text-theme-text leading-leading-30'>{ faci?.details }</p>
                         </div>
                     ))
-                } */}
+                }
             </div>
             <p className='capitalize font-normal text-base text-theme-text leading-leading-30 mb-b-30'>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text.</p>
             <h2 className='text-theme-dark font-bold text-[35px] leading-[42px] mb-b-30'>3 Simple Steps to Process</h2>

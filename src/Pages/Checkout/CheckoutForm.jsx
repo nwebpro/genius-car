@@ -36,7 +36,7 @@ const CheckoutForm = ({ service }) => {
             if(data.success) {
                 toast.success(data.message)
                 form.reset()
-                navigate('/')
+                navigate('/dashboard/order')
             }else{
                 toast.error(data.error)
             }
