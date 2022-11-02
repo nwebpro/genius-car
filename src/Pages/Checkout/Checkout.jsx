@@ -8,14 +8,14 @@ const Checkout = () => {
     const { serviceId } = useParams()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/genius-car/service/${serviceId}`)
+        fetch(`https://genius-car.vercel.app/api/genius-car/service/${serviceId}`)
         .then(res => res.json())
         .then(data => setService(data.data))
     }, [serviceId])
 
     return (
         <div className='px-[15px] lg:px-0'>
-            <Breadcrumb />
+            <Breadcrumb title='Contact Page' />
             <CheckoutForm service={ service } />
         </div>
     )

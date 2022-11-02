@@ -1,7 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../../assets/logo.svg'
 import { BiSearch, BiShoppingBag } from "react-icons/bi"
+import { FiLogIn } from "react-icons/fi"
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider'
+import { toast } from 'react-toastify'
 
 const navLinks = [
     {
@@ -33,6 +36,13 @@ const navLinks = [
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const { user, userLogout } = useContext(AuthContext)
+
+    const handleLogout = () => {
+        userLogout()
+            .then(toast.warning('User logged out!', {autoClose: '500'}))
+            .catch(error => console.log(error))
+    }
 
     return (
         <div className="mx-auto container h-[86.78px] my-b-50 px-[15px] lg:px-0">
@@ -46,6 +56,19 @@ const Header = () => {
                     <img src={ logo } alt="Genius Car Logo" />
                 </Link>
                 <ul className="items-center hidden space-x-8 lg:flex">
+                    {
+                        user?.uid &&
+                        <li>
+                            <Link
+                            to='/dashboard'
+                            aria-label='Dashboard'
+                            title='Dashboard'
+                            className="font-semibold text-theme-body transition-colors duration-200 hover:text-theme-default text-lg leading-21"
+                            >
+                                Dashboard
+                            </Link>
+                        </li>
+                    }
                     {
                         navLinks.map(navItem => (
                             <li key={ navItem.id }>
@@ -61,24 +84,61 @@ const Header = () => {
                         ))
                     }
                 </ul>
-                <ul className="items-center hidden space-x-8 lg:flex">
-                    <li className='cursor-pointer'>
-                        <BiShoppingBag className='font-semibold text-theme-body transition-colors duration-200 hover:text-theme-default text-xl leading-21' />
-                    </li>
-                    <li className='cursor-pointer'>
-                        <BiSearch className='font-semibold text-theme-body transition-colors duration-200 hover:text-theme-default text-xl leading-21' />
-                    </li>
-                    <li>
-                        <Link
-                        to="/contact"
-                        className="font-semibold transition-colors duration-200 text-theme-default text-lg leading-21 border border-theme-default px-7 pt-[15px] pb-[19px] rounded-md hover:bg-theme-default hover:text-white"
-                        aria-label="Appointment"
-                        title="Appointment"
-                        >
-                            Appointment
-                        </Link>
-                    </li>
-                </ul>
+                <div>
+                    <ul className="items-center hidden space-x-8 lg:flex">
+                        <li className='cursor-pointer'>
+                            <BiShoppingBag className='font-semibold text-theme-body transition-colors duration-200 hover:text-theme-default text-xl leading-21' />
+                        </li>
+                        <li className='cursor-pointer'>
+                            <BiSearch className='font-semibold text-theme-body transition-colors duration-200 hover:text-theme-default text-xl leading-21' />
+                        </li>
+                        <li>
+                            <Link
+                            to="/contact"
+                            className="font-semibold transition-colors duration-200 text-theme-default text-lg leading-21 border border-theme-default px-7 pt-[15px] pb-[19px] rounded-md hover:bg-theme-default hover:text-white"
+                            aria-label="Appointment"
+                            title="Appointment"
+                            >
+                                Appointment
+                            </Link>
+                        </li>
+                        {
+                            user?.uid ?
+                            <li className='dropdown dropdown-end'>
+                                <label tabIndex={0} className="btn border-4 border-theme-default hover:border-theme-default btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        {   
+                                            user?.photoURL ?
+                                            <img src={ user?.photoURL } alt="" />
+                                            :
+                                            <img src="https://placeimg.com/80/80/people" alt='' />
+                                        }
+                                    </div>
+                                </label>
+                                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 w-40 bg-theme-default rounded-rounded-10">
+                                    <li>
+                                        <button onClick={handleLogout} className='font-semibold text-white transition-colors duration-200 hover:text-white hover:bg-theme-default focus:bg-theme-default text-base leading-21'>
+                                            Logout
+                                        </button>
+                                    </li>
+                                </ul>
+                            </li>
+                            :
+                            <li className='dropdown dropdown-end'>
+                                <label tabIndex={0} className="btn bg-theme-default hover:bg-theme-default border border-theme-default hover:border-theme-default btn-circle">
+                                    <FiLogIn />
+                                </label>
+                                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 w-40 bg-theme-default rounded-rounded-10">
+                                    <li>
+                                        <Link to='/login' className='font-semibold text-white transition-colors duration-200 hover:text-white hover:bg-theme-default focus:bg-theme-default text-base leading-21'>
+                                            Login
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
+                </div>
                 <div className="lg:hidden flex items-center space-x-2">
                     <ul className='items-center flex space-x-5'>
                         <li className='cursor-pointer'>
@@ -87,6 +147,41 @@ const Header = () => {
                         <li className='cursor-pointer'>
                             <BiSearch className='font-semibold text-theme-body transition-colors duration-200 hover:text-theme-default text-xl leading-21' />
                         </li>
+                        {
+                            user?.uid ?
+                            <li className='dropdown dropdown-end'>
+                                <label tabIndex={0} className="btn border-4 border-theme-default hover:border-theme-default btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        {   
+                                            user?.photoURL ?
+                                            <img src={ user?.photoURL } alt="" />
+                                            :
+                                            <img src="https://placeimg.com/80/80/people" alt='' />
+                                        }
+                                    </div>
+                                </label>
+                                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 w-40 bg-theme-default rounded-rounded-10">
+                                    <li>
+                                        <button onClick={handleLogout} className='font-semibold text-white transition-colors duration-200 hover:text-white hover:bg-theme-default focus:bg-theme-default text-base leading-21'>
+                                            Logout
+                                        </button>
+                                    </li>
+                                </ul>
+                            </li>
+                            :
+                            <li className='dropdown dropdown-end'>
+                                <label tabIndex={0} className="btn bg-theme-default hover:bg-theme-default border border-theme-default hover:border-theme-default btn-circle">
+                                    <FiLogIn />
+                                </label>
+                                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 w-40 bg-theme-default rounded-rounded-10">
+                                    <li>
+                                        <Link to='/login' className='font-semibold text-white transition-colors duration-200 hover:text-white hover:bg-theme-default focus:bg-theme-default text-base leading-21'>
+                                            Login
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
                     </ul>
                     <button
                         aria-label="Open Menu"
@@ -141,6 +236,19 @@ const Header = () => {
                                 </div>
                                 <nav>
                                     <ul className="space-y-4">
+                                        {
+                                            user?.uid &&
+                                            <li>
+                                                <Link
+                                                to='/dashboard'
+                                                aria-label='Dashboard'
+                                                title='Dashboard'
+                                                className="font-semibold text-theme-body transition-colors duration-200 hover:text-theme-default text-lg leading-21"
+                                                >
+                                                    Dashboard
+                                                </Link>
+                                            </li>
+                                        }
                                         {
                                             navLinks.map(navItem => (
                                                 <li key={ navItem.id }>

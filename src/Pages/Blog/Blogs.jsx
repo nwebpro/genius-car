@@ -4,7 +4,7 @@ import Breadcrumb from '../Shared/Breadcrumb/Breadcrumb'
 const Blogs = () => {
     return (
         <div className='px-[15px] lg:px-0'>
-            <Breadcrumb />
+            <Breadcrumb title='Blog Page' />
         </div>
     )
 }

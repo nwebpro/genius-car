@@ -12,7 +12,7 @@ const ServiceDetail = () => {
     const { serviceId } = useParams()
 
     useEffect(() => {
-        fetch(`http://localhost:5000/api/genius-car/service/${serviceId}`)
+        fetch(`https://genius-car.vercel.app/api/genius-car/service/${serviceId}`)
         .then(res => res.json())
         .then(data => setService(data.data))
     }, [serviceId])

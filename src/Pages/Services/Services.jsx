@@ -5,7 +5,7 @@ import Service from '../Home/Services/Service'
 const Services = () => {
     return (
         <div className='px-[15px] lg:px-0'>
-            <Breadcrumb />
+            <Breadcrumb title='Services Page' />
             <Service />
         </div>
     )

@@ -5,7 +5,7 @@ import ContactForm from './ContactForm'
 const Contact = () => {
     return (
         <div className='px-[15px] lg:px-0'>
-            <Breadcrumb />
+            <Breadcrumb title='Contact Page' />
             <ContactForm />
         </div>
     )

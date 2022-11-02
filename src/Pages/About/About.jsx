@@ -5,7 +5,7 @@ import Breadcrumb from '../Shared/Breadcrumb/Breadcrumb'
 const About = () => {
     return (
         <div className='px-[15px] lg:px-0'>
-            <Breadcrumb />
+            <Breadcrumb title='About Page' />
             <AboutMe />
         </div>
     )

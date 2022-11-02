@@ -5,15 +5,16 @@ import Blogs from "../Pages/Blog/Blogs"
 import Checkout from "../Pages/Checkout/Checkout"
 import Contact from "../Pages/Contact/Contact"
 import Dashboard from "../Pages/Dashboard/Dashboard/Dashboard"
-import Login from "../Pages/Dashboard/Login/Login"
 import ManageInventory from "../Pages/Dashboard/ManageInventory/ManageInventory"
 import Order from "../Pages/Dashboard/Order/Order"
 import OrderReview from "../Pages/Dashboard/OrderReview/OrderReview"
-import Register from "../Pages/Dashboard/Register/Register"
 import ErrorPage from "../Pages/ErrorPage/ErrorPage"
 import Home from "../Pages/Home/Home/Home"
+import Login from "../Pages/Login/Login"
+import Register from "../Pages/Register/Register"
 import Services from "../Pages/Services/Services"
 import ServiceDetail from "../Pages/Shared/ServiceDetails/ServiceDetail/ServiceDetail"
+import PrivateRoute from "./PrivateRoute"
 
 const { createBrowserRouter } = require("react-router-dom")
 
@@ -53,38 +54,62 @@ export const router = createBrowserRouter([
             },
             {
                 path: '/checkout/:serviceId',
-                element: <Checkout />
+                element: (
+                    <PrivateRoute>
+                        <Checkout />
+                    </PrivateRoute>
+                )
+            },
+            {
+                path: '/login',
+                element: <Login />
+            },
+            {
+                path: '/register',
+                element: <Register />
             }
         ]
     },
     {
         path: '/dashboard',
-        element: <DashboardLayout />,
+        element: (
+            <PrivateRoute>
+                <DashboardLayout />
+            </PrivateRoute>
+        ),
         errorElement: <ErrorPage />,
         children: [
             {
                 path: '/dashboard',
-                element: <Dashboard />
+                element: (
+                    <PrivateRoute>
+                        <Dashboard />
+                    </PrivateRoute>
+                )
             },
             {
                 path: '/dashboard/order',
-                element: <Order />
+                element: (
+                    <PrivateRoute>
+                        <Order />
+                    </PrivateRoute>
+                )
             },
             {
                 path: '/dashboard/order-review',
-                element: <OrderReview />
+                element: (
+                    <PrivateRoute>
+                        <OrderReview />
+                    </PrivateRoute>
+                )
             },
             {
                 path: '/dashboard/manage-inventory',
-                element: <ManageInventory />
-            },
-            {
-                path: '/dashboard/login',
-                element: <Login />
-            },
-            {
-                path: '/dashboard/register',
-                element: <Register />
+                element: (
+                    <PrivateRoute>
+                        <ManageInventory />
+                    </PrivateRoute>
+                )
             }
         ]
     }

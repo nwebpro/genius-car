@@ -1,6 +1,9 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import logo from '../../../assets/logo.svg'
+import { FiLogIn } from "react-icons/fi"
+import { AuthContext } from '../../../Context/AuthProvider/AuthProvider'
 
 const navLinks = [
     {
@@ -17,16 +20,18 @@ const navLinks = [
       id: "manageInventory",
       title: "Manage Inventory",
       path: '/dashboard/manage-inventory'
-    },
-    {
-      id: "login",
-      title: "Login",
-      path: '/dashboard/login'
     }
 ]
 
 const DashboardNavbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const { user, userLogout } = useContext(AuthContext)
+
+    const handleLogout = () => {
+        userLogout()
+            .then(toast.warning('User logged out!', {autoClose: '500'}))
+            .catch(error => console.log(error))
+    }
 
     return (
         <div className="mx-auto container h-[86.78px] my-b-50 px-[15px] lg:px-0">
@@ -40,6 +45,16 @@ const DashboardNavbar = () => {
                     <img src={ logo } alt="Genius Car Logo" />
                 </Link>
                 <ul className="items-center hidden space-x-8 lg:flex">
+                    <li>
+                        <Link
+                        to='/'
+                        aria-label='Home'
+                        title='Home'
+                        className="font-semibold text-theme-body transition-colors duration-200 hover:text-theme-default text-lg leading-21"
+                        >
+                            Home
+                        </Link>
+                    </li>
                     {
                         navLinks.map(navItem => (
                             <li key={ navItem.id }>
@@ -54,8 +69,80 @@ const DashboardNavbar = () => {
                             </li>
                         ))
                     }
+                    {
+                        user?.uid ?
+                        <li className='dropdown dropdown-end'>
+                            <label tabIndex={0} className="btn border-4 border-theme-default hover:border-theme-default btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    {   
+                                        user?.photoURL ?
+                                        <img src={ user?.photoURL } alt="" />
+                                        :
+                                        <img src="https://placeimg.com/80/80/people" alt='' />
+                                    }
+                                </div>
+                            </label>
+                            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 w-40 bg-theme-default rounded-rounded-10">
+                                <li>
+                                    <button onClick={handleLogout} className='font-semibold text-white transition-colors duration-200 hover:text-white hover:bg-theme-default focus:bg-theme-default text-base leading-21'>
+                                        Logout
+                                    </button>
+                                </li>
+                            </ul>
+                        </li>
+                        :
+                        <li className='dropdown dropdown-end'>
+                            <label tabIndex={0} className="btn bg-theme-default hover:bg-theme-default border border-theme-default hover:border-theme-default btn-circle">
+                                <FiLogIn />
+                            </label>
+                            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 w-40 bg-theme-default rounded-rounded-10">
+                                <li>
+                                    <Link to='/login' className='font-semibold text-white transition-colors duration-200 hover:text-white hover:bg-theme-default focus:bg-theme-default text-base leading-21'>
+                                        Login
+                                    </Link>
+                                </li>
+                            </ul>
+                        </li>
+                    }
                 </ul>
                 <div className="lg:hidden flex items-center space-x-2">
+                    <ul className='items-center flex space-x-5'>
+                        {
+                            user?.uid ?
+                            <li className='dropdown dropdown-end'>
+                                <label tabIndex={0} className="btn border-4 border-theme-default hover:border-theme-default btn-circle avatar">
+                                    <div className="w-10 rounded-full">
+                                        {   
+                                            user?.photoURL ?
+                                            <img src={ user?.photoURL } alt="" />
+                                            :
+                                            <img src="https://placeimg.com/80/80/people" alt='' />
+                                        }
+                                    </div>
+                                </label>
+                                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 w-40 bg-theme-default rounded-rounded-10">
+                                    <li>
+                                        <button onClick={handleLogout} className='font-semibold text-white transition-colors duration-200 hover:text-white hover:bg-theme-default focus:bg-theme-default text-base leading-21'>
+                                            Logout
+                                        </button>
+                                    </li>
+                                </ul>
+                            </li>
+                            :
+                            <li className='dropdown dropdown-end'>
+                                <label tabIndex={0} className="btn bg-theme-default hover:bg-theme-default border border-theme-default hover:border-theme-default btn-circle">
+                                    <FiLogIn />
+                                </label>
+                                <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 w-40 bg-theme-default rounded-rounded-10">
+                                    <li>
+                                        <Link to='/login' className='font-semibold text-white transition-colors duration-200 hover:text-white hover:bg-theme-default focus:bg-theme-default text-base leading-21'>
+                                            Login
+                                        </Link>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                    </ul>
                     <button
                         aria-label="Open Menu"
                         title="Open Menu"
@@ -109,6 +196,16 @@ const DashboardNavbar = () => {
                                 </div>
                                 <nav>
                                     <ul className="space-y-4">
+                                        <li>
+                                            <Link
+                                            to='/'
+                                            aria-label='Home'
+                                            title='Home'
+                                            className="font-semibold text-theme-body transition-colors duration-200 hover:text-theme-default text-lg leading-21"
+                                            >
+                                                Home
+                                            </Link>
+                                        </li>
                                         {
                                             navLinks.map(navItem => (
                                                 <li key={ navItem.id }>

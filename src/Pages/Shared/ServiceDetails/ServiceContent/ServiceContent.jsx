@@ -2,7 +2,6 @@ import React from 'react'
 
 const ServiceContent = ({ service }) => {
     const { title, img, description, facility } = service
-    console.log(facility);
     return (
         <>
             <img className='rounded-rounded-10 mb-b-50 w-full' src={ img } alt={ title } />

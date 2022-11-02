@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { AuthContext } from '../../Context/AuthProvider/AuthProvider'
 
 const CheckoutForm = ({ service }) => {
+    const { user } = useContext(AuthContext)
     const navigate = useNavigate()
     const { _id, price, title, img } = service
 
@@ -24,7 +26,7 @@ const CheckoutForm = ({ service }) => {
             message
         }
 
-        fetch('http://localhost:5000/api/genius-car/orders', {
+        fetch('https://genius-car.vercel.app/api/genius-car/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -49,7 +51,7 @@ const CheckoutForm = ({ service }) => {
     return (
         <section className="mx-auto container bg-[#F3F3F3] rounded-rounded-10 mb-b-70 lg:mb-b-130">
             <div className='px-10 md:px-16 lg:px-24 pt-10 md:pt-16 lg:pt-24'>
-                <div className='p-5 rounded-rounded-10 bg-white flex w-full md:max-w-sm justify-between items-center mx-auto'>
+                <div className='p-5 rounded-rounded-10 bg-white flex w-full md:max-w-sm justify-between items-center mx-auto gap-2'>
                     <img className='w-40 rounded-rounded-10' src={ img } alt={ title } />
                     <div>
                         <h3 className='text-theme-dark text-xl font-bold leading-leading-30'>{ title }</h3>
@@ -89,6 +91,8 @@ const CheckoutForm = ({ service }) => {
                                 className="w-full rounded-rounded-10 py-4 px-6 text-theme-dark placeholder-[#A2A2A2] font-normal text-base leading-leading-30 border focus:outline-1 focus:outline-theme-default"
                                 type="email"
                                 name="email"
+                                defaultValue={user?.email}
+                                readOnly
                                 placeholder='Your Email'
                             />
                         </div>
