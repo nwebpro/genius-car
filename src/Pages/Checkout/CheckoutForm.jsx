@@ -29,7 +29,8 @@ const CheckoutForm = ({ service }) => {
         fetch('https://genius-car.vercel.app/api/genius-car/orders', {
             method: 'POST',
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('geniusCarToken')}`
             },
             body: JSON.stringify(placeOrder)
         })

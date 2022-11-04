@@ -23,6 +23,7 @@ const AuthProvider = ({ children }) => {
 
     const userLogout = () => {
         setLoading(true)
+        localStorage.removeItem('geniusCarToken')
         return signOut(auth)
     }
 

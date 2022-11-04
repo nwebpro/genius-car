@@ -7,13 +7,24 @@ import Swal from 'sweetalert2'
 
 const Order = () => {
     const [orders, setOrders] = useState([])
-    const { user } = useContext(AuthContext)
+    const { user, userLogout } = useContext(AuthContext)
 
     useEffect(() => {
-        fetch(`https://genius-car.vercel.app/api/genius-car/orders?email=${user?.email}`)
-        .then(res => res.json())
-        .then(data => setOrders(data.data))
-    }, [user?.email, orders])
+        fetch(`https://genius-car.vercel.app/api/genius-car/orders?email=${user?.email}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('geniusCarToken')}`
+            }
+        })
+        .then(res => {
+            if(res.status === 401 || res.status === 403) {
+                userLogout()
+            }
+            return res.json()
+        })
+        .then(data => {
+            setOrders(data.data)
+        })
+    }, [user?.email, orders, userLogout])
 
     const handleOrderDelete = deleteId => {
         Swal.fire({
@@ -33,7 +44,10 @@ const Order = () => {
                 )
 
                 fetch(`https://genius-car.vercel.app/api/genius-car/order/${deleteId}`, {
-                    method: "DELETE"
+                    method: "DELETE",
+                    headers: {
+                        authorization: `Bearer ${localStorage.getItem('geniusCarToken')}`
+                    }
                 })
                 .then(res => res.json())
                 .then(data => {
@@ -50,7 +64,8 @@ const Order = () => {
         fetch(`https://genius-car.vercel.app/api/genius-car/order/${statusUpdateId}`, {
             method: 'PATCH', 
             headers: {
-                'content-type': 'application/json'
+                'content-type': 'application/json',
+                authorization: `Bearer ${localStorage.getItem('geniusCarToken')}`
             },
             body: JSON.stringify({ status: 'Approved'} )
         })
