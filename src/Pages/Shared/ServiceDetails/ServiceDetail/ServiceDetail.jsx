@@ -19,7 +19,7 @@ const ServiceDetail = () => {
 
     return (
         <div className='px-[15px] lg:px-0'>
-            <Breadcrumb />
+            <Breadcrumb title={service?.title} />
             <div className='container mx-auto mb-b-70 lg:mb-b-130'>
                 <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
                     <div className='md:col-span-2'>
