@@ -1,17 +1,16 @@
 import React, { useContext } from 'react'
 import loginpage from '../../assets/images/login/login.svg'
-import facebook from '../../assets/images/login/facebook.svg'
-import google from '../../assets/images/login/google.svg'
-import linkedin from '../../assets/images/login/linkedin.svg'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider'
 import { toast } from 'react-toastify'
+import SocialLogin from '../Shared/SocialLogin/SocialLogin'
+import { setJWTAuthToken } from '../../api/jwtAuth'
 
 const Login = () => {
     const navigate = useNavigate()
     const loaction = useLocation()
     const from = loaction.state?.from?.pathname || '/'
-    const { userLogin, signInWithGoogle } = useContext(AuthContext)
+    const { userLogin } = useContext(AuthContext)
 
     const handleUserLogin = e => {
         e.preventDefault()
@@ -22,32 +21,10 @@ const Login = () => {
             .then(result => {
                 const user = result.user
                 toast.success('Login Success!', {autoClose: '500'})
-                const currentUser = {
-                    email: user.email
-                }
-                // Get JWT Token
-                fetch('https://genius-car.vercel.app/api/genius-car/jwt', {
-                    method: 'POST',
-                    headers: {
-                        'content-type': 'application/json'
-                    },
-                    body: JSON.stringify(currentUser)
-                })
-                .then(res => res.json())
-                .then(data => {
-                    // Local Storage is the easiest but not the best place to share JWT Token
-                    localStorage.setItem('geniusCarToken', data.data)
-                })
+                setJWTAuthToken(user)
                 navigate(from, { replace: true })
             })
             .catch(error => toast.error(error.message, {autoClose: '500'}))
-    }
-
-    const handleGoogleSignin = () => {
-        signInWithGoogle()
-            .then(result => {
-                navigate(from, { replace: true })
-            })
     }
 
     return (
@@ -91,17 +68,7 @@ const Login = () => {
                         </div>
                     </form>
                     <p className='text-center text-theme-body text-lg leading-leading-21 font-medium mb-b-30'>Or Sign In With</p>
-                    <div className='flex justify-center items-center gap-4 mb-b-50'>
-                        <div className='w-14 h-14 rounded-full bg-[#F5F5F8] flex items-center justify-center cursor-pointer'>
-                            <img src={ facebook } alt="" />
-                        </div>  
-                        <div className='w-14 h-14 rounded-full bg-[#F5F5F8] flex items-center justify-center cursor-pointer'>
-                            <img src={ linkedin } alt="" />
-                        </div>  
-                        <div onClick={handleGoogleSignin} className='w-14 h-14 rounded-full bg-[#F5F5F8] flex items-center justify-center cursor-pointer'>
-                            <img src={ google } alt="" />
-                        </div>     
-                    </div>
+                    <SocialLogin />
                     <p className='text-lg font-normal text-theme-text text-center leading-leading-21'>
                         Have an account? <Link to='/register' className='font-semibold text-theme-default'>Sign Up</Link>
                     </p>
